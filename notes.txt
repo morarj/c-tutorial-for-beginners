@@ -1,0 +1,60 @@
+Section 1. Introduction
+Section 2. 
+5. Introduction.
+	C# vs .NET
+	CLR (Common Language Run-time)
+	Architecture of .NET Application
+	Our First C# Application
+6. C# vs .NET
+	C# is a programming language
+	.NET is a framework for building applications on Windows
+		CRL (Common Language Runtime)
+		Class Library
+7. What is CLR?
+	C/C++
+		App -> Compile -> Native Code (Machine code)
+	C#
+		App -> Compile -> Intermediate Language (IL) Code -> CLR | Just-in-time compilation (JIT) -> Native Code 
+8. Architecture of .NET Applications
+	C#
+		Classes
+			Container which has attributes and methods
+			EJ
+				Car
+				Make, Model, Color
+				Start(), Move()
+		Namespace 
+			Container for related classes
+		Assembly (Dinamically Linked Library (DLL) or EXE)
+			Container for related Namespaces
+		On compilation the compiler builds assemblys
+9. Getting Visual Studio
+	1-Get-Visual-Studio.pdf
+10. Our First Application
+	File->New->Project->Visual C#->Windows->Console Application
+		HelloWorld
+	AssemblyInfo is the information and the indentification for the assembly that will result from compiling
+	App.config xml for the configurations of the application. ConnectionsStrings or Settings
+	
+	Program.cs
+		using to add the namespaces. System, System.Collections.Generic
+		namespace HelloWorld
+			class Program
+				static void Main(string[] args) {}
+		Methods have inputs and outputs
+
+		Console.WriteLine("Hello World");
+		
+		Run using Ctrl + F5
+11. What is ReSharper?
+12. Summary
+	C# vs .NET
+		C# is a programming Language and .NET is a framework. It consists of run-time enviroment (CLR) and a class library we use for building applications.
+	CLR
+		When compiling C# compiles it IL (Intermediate Language) which is plataform agnostic, to run it on a different piece of hardware CLR is needed. CLR compiles IL code to machine code, process which is called just-in-time Compilation (JIT)
+	Architecture of .NET Applications
+		Classes (Methods and Attributes) -> Namespaces -> Assemblys
+		Assemblys are EXE or DLL
+		EXE can be executed
+		DLL file that includes code that can be re-used across diferent programs
+
