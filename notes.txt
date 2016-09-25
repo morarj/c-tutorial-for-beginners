@@ -1,5 +1,5 @@
 Section 1. Introduction
-Section 2. 
+Section 2. Introduction to C# and .NET Framework
 5. Introduction.
 	C# vs .NET
 	CLR (Common Language Run-time)
@@ -58,3 +58,167 @@ Section 2.
 		EXE can be executed
 		DLL file that includes code that can be re-used across diferent programs
 
+Section 3. Primitive Types and Expressions
+13. Introduction
+14. Variables and Constants
+	Variable: a name given to a storage location in memory
+	Constant: an immutable value
+		int number	(type identifier)
+		int Number = 1;	(type identifier value)
+		const float Pi = 3.14f;
+	Identifiers
+		Cant start with numbers
+		Cant contain a whitespace
+		Cant be a reserved keyword
+		Use meaningful names
+	Naming Conventions
+		Camel Case: firstName			(Local variables)
+		Pascal Case: FirstName			(Constant variables)
+		Hungarian Notation: strFirstName
+
+	Primitive Types
+		float number = 1.2f;
+		double is the default datatype for real numbers
+		decimal number = 1.2m;
+	Non-Primitive
+		String, Array, Enum, Class
+15. Overflowing
+	byte number = 255;
+	number++; // 0
+	
+	On this example there is an overflow
+	
+	Overflow will throw an exception
+	checked
+	{
+		byte number = 255;
+		number = number +1;
+	}
+16. Scope
+	Where a variable or const has meaning and is accesible
+	{
+		byte a; // Accesible everywhere
+		{
+			byte b; // Accesible only beyond here
+			{
+				byte c; // Accesible only here
+			}
+		}
+	}
+17. Demo: Variables and Constants
+	CTRL + Click on the data type to open the object browser
+	Project Variables
+		byte number;
+		int count = 10;
+		float totalPrice = 20.95f;
+		char character = 'A';		// Single Quote
+		string firstName = "Hugo";	// Double Quotes
+		bool isWorking = false;
+		var test = 3;
+
+		Console.WriteLine(number);	// cw + tab
+		Console.WriteLine(count);
+		Console.WriteLine(totalPrice);
+		Console.WriteLine(character);
+		Console.WriteLine(firstName);
+		Console.WriteLine(isWorking);
+		Console.WriteLine(test);
+
+		// Some kind of template or format string
+		Console.WriteLine("{0} {1}", byte.MinValue, byte.MaxValue)
+		Console.WriteLine("{0} {1}", float.MinValue, float.MaxValue)
+18. Type Conversion
+	Implicit Type Conversion
+		byte b = 1;
+		int i = b;
+
+		int i = 1;
+		float b = i;
+
+		int i = 1;
+		byte b = i; // Error data loss
+	Explicit Type Conversion or Casting
+		int i = 1;
+		byte b = (byte)i;
+
+		float f = 1.0f;
+		int i = (float)f;
+	Conversion between non-compatible types
+		string = "1";
+		int i = Convert.ToInt32(s);
+		int j = int.Parse(s);
+
+19. Demo: Type Conversion
+	New Project TypeConversion
+		byte b;
+		int i;
+
+		b = 1;
+		i = b;
+		Console.WriteLine(i);
+
+		i = 1;
+		b = (byte) i;
+		Console.WriteLine(b);
+
+		i = 1000;
+		b = (byte) i;
+		Console.WriteLine(b);
+
+		string str = "1234";
+		i = Convert.ToInt32(str);
+		Console.WriteLine(i);
+		try
+		{
+			b = Convert.ToByte(str);	// Crash
+			Console.WriteLine(b);
+			str = "true";
+			bool boolean = Conver.ToBoolean(str);
+			Console.WriteLine(boolean);
+		}
+		catch (Exception)
+		{
+			Console.WriteLine("The number could not be converted");
+		}
+20. Operators
+	Arithmetic
+		a++
+			// The value of a is passed to b then incremented (a = 2, b = 1)
+			a = 1
+			b = a++;
+		++a	// The value is first incremented then passed to b (a = 2, b = 2)
+			a = 1;
+			b = ++a;
+			
+	Comparison
+	Assignment
+		=, +=, -=, *=, /=
+	Logical
+	Bitwise
+		&, |
+21. What are logical Operators?
+	2-Logical-Operators.pdf
+22. Demo: Operators
+	Operators
+		var a = 10;
+		var b = 3;
+		var c = 2;		
+
+		Console.WriteLine(a + b);
+		Console.WriteLine(a / b);
+		Console.WriteLine((float)a / (float)b);
+		Console.WriteLine(a + b * c);
+		Console.WriteLine((a + b) * c);
+		Console.WriteLine(a > b);
+		Console.WriteLine(a == b);
+		Console.WriteLine(a != b);
+		Console.WriteLine(!(a != b));	
+		Console.WriteLine(c > b && c > a);
+		Console.WriteLine(c > b && c == a);
+		Console.WriteLine(c > b || c == a);
+23. Comments
+	//
+	/* */
+	Do not explain what the code is doing
+24. Summary
+	3-Summary-Primitive-Types-And-Expressions.pdf	
