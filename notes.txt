@@ -222,3 +222,213 @@ Section 3. Primitive Types and Expressions
 	Do not explain what the code is doing
 24. Summary
 	3-Summary-Primitive-Types-And-Expressions.pdf	
+
+Section 4. Non-Primitive Types
+25. Introduction
+	Classes, Structures, arrays, Enums, etc.
+26. Classes
+	Building blocks of our applications
+		Person
+		Name, Age, height, Weight
+		Walk, Talk, Eat, Sleep
+	Object is an instance of a class
+	
+	public class Person (access modifier class identifier)
+	Variables or field (access modifier aswell)
+	method (access modifier aswell)
+
+	Objects
+		Person person = new Person(); (Allocating memory unlike primitive types)
+
+	Static
+		No object needed to access a static object
+		The methods and attributes will be only at one place in the memory
+27. Demo: Classes
+	CSharpFundamentals
+	At the namespace level create a class
+	Program.cs		
+		Main
+			var john = new Person();
+			john.FisrtName = "John";
+			john.LastName = "Smith";
+			john.Introduce();
+
+			Calculator calculator = new Calculator();
+			var result = calculator.Add(1, 2);
+			Console.WriteLine(result);
+
+	Person.cs
+		public class Person
+		{
+			public string FirstName;
+			public string LastName;
+
+			public void Introduce()
+			{
+				Console.WriteLine("My Name is " + FirstName + " " + LastName);
+			}
+		}
+
+	Add->New folder->Math->Calculator
+	CSharpFundamentals.Math
+		public class Calculator	
+			public int Add(int a, int b)
+				return a + b;	
+28. Structs
+	Very similar to a class. Use them to create small lightweight objects
+
+29. Arrays
+	Whats is an Array
+		A data structure that we use to store a collection of variables of the same type.
+	Declaring Arrays
+		int[] numbers = new int[3]; (Allocating Memory) (Its an instance)
+	Initializing Arrays
+		int[] numbers = new int[3] { 1, 2, 3 } (Initializing)
+		numbers[0] = 1;
+	Access Arrays Elements
+		numbers[0];
+30. Demo: Arrays
+	CSharpFundamentals
+		Main
+			int[] numbers = new int[3];
+			var numbers = new int[3];	// Every element is default to 0
+			numbers[0] = 1;
+
+			var flags = new bool[3];
+			flags[0] = true;
+
+			var names = new string[3] {"Jack", "John", "Mary"}	// Every elements needs to be initialized with this syntax
+			
+			Console.WriteLine(numbers[0]);
+			Console.WriteLine(numbers[1]);
+			Console.WriteLine(numbers[2]);
+			
+			Console.WriteLine(flags[0]);
+			Console.WriteLine(flags[1]);
+			Console.WriteLine(flags[2]);
+31. Strings
+	What is a string
+		A sequence of characters
+			"Hello World"
+	How to create strings
+		string firstName = "Hugo";
+		string name = firstName + " " + lastName;
+		string name = string.Format("{0} {1}", firstName, lastName); (Format is a static method)
+			"Template with placeholders {}" and parameters
+
+		var numbers = new int[3] {1, 2, 3}
+		string list = string.Join(",", numbers)
+
+		string firstName = "Hugo";
+		char firstChar = firstName[0];
+
+		Strings are immutable and cant be changed with methods that return a new string.
+	Escape charactres
+		\n	New Line
+		\t	Tab
+		\\	Backslash
+		\'	Single Quotation Mark
+		\"	Doble Quotation Mark
+	Verbatim strings
+		string path = @"c:\projects\project1\folder1";
+32. Demo: Strings
+	CSharpFundamentals
+		string firstName = "Hugo";
+		String lastName = "Morales";	(Needs the import of the namespace System)
+		var firstName = "Hugo";
+		
+		var fullName = firstName + " " + lastName;
+		var myFullName = string.Format("My name is {0} {1}", fisrtName, lastName);
+
+		var names = new string[3] {"John", "Jack", "Mary"};
+		var listOfNames = string.Join(",", names);
+		Console.WriteLine(listOfNames);
+
+		var text = "Hi \n Look into these\n c:\\folder\\folder\\folder\\name";
+		Console.WriteLine(text);
+
+		text = @"Hi
+Look into these
+c:\folder\folder\folder\name";
+		Console.WriteLine(text);
+33. Enums
+	Datatype that represents a set of name/value pairs (constants)
+	Usage of Enums 
+		// Regular
+		const int RegularMail = 1;
+		const int RegisteredMail = 2;
+		const int Express = 3;
+		
+		// Enum is internally integer and can be changed
+		public enum ShppingMethod : byte
+		{
+			RegularAirMail = 1;
+			RegisteredAirMail = 2;
+			Express = 3;
+		}
+		
+		var method = ShippingMethod.Express;
+34. Demo: Enums
+	CSharpFundamentals
+		Namespace level
+			public enum ShippingMethod
+			{
+				RegularAirMail = 1;
+				RegisteredAirMail = 2;
+				Express = 3;
+			}
+		Main
+			var method = ShippingMethod.Express;
+			Console.WriteLine((int) method);
+
+			var methodId = 3;
+			Console.WriteLine((ShippingMethod)methodId);
+
+			Console.WriteLine(method.ToString());
+
+			// Parsing: Converting a string to any other type
+			var methodName = "Express";
+			var shippingMethod = (ShippingMethod)Enum.Parse(typeof(ShippingMethod), methodName);
+35. Reference Types and Value Types
+	Structures -> 	Primitive Types, Custom structures
+		Value Types
+		Allocated on stack memory
+		Memory allocation is done automatically
+		Immediately removed when out of scope
+	Classes		Arrays, Strings, Custom classes	
+		You need to allocate memory
+		Memory called heap
+		It'll stay on memory util garbage collector removes it
+36. Demo: Reference Types and Value Types
+	CSharpFundamentals
+	Main
+		// A copy of value 10 is stored in b when its a value type
+		var a = 10;
+		var b = a;
+		b++;
+		Console.WriteLine(string.Format("a: {0}, b: {1}", a, b))
+
+		// Since its a referenced type the value is changed in both variables
+		var array1 = new int[3] {1, 2, 3};
+		var array2 = array1;
+		array2[0] = 0;
+		Console.WriteLine(string.Format("array1[0]: {0}, array2[0]: {1}", array1[0], array2[0]));
+37. Demo: Reference Types and Value Types
+	public class Person
+		public int Age;
+	class Program
+		Main
+			var number = 1;
+			Increment(number);
+			Console.WriteLine(number);
+			var person = new Person() {Age = 20};
+			MakeOld(person);
+			Console.WriteLine(person.Age);
+		public static void Increment(int number)
+			number += 20;
+		public static void MakeOld(Person person)
+			person.Age += 10;
+38. Summary
+	4-Summary-Non-Primitive-Types.pdf
+
+Section 5. Control Flow
