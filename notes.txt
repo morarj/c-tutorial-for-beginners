@@ -432,3 +432,160 @@ c:\folder\folder\folder\name";
 	4-Summary-Non-Primitive-Types.pdf
 
 Section 5. Control Flow
+39. Introduction
+
+40. Conditional Statements
+	if / else statements
+		if (condition)
+			someStatement
+		else
+			otherStatements
+	Switch / case statements
+		switch(role)
+			case Role.Admin:
+				...
+				break;
+			case Role.Moderator:
+				...
+				break;
+			default:
+				...
+				break;
+	Conditional operator: a ? b : c
+
+41. Demo: If/Else and Switch/Case
+	Conditionals project
+	Seasons (delete the class part)
+		public enum Season
+		{
+			Spring,
+			Summer,
+			Autum,
+			Winter
+		}
+	Program
+		Main
+			int hour = 10;
+			
+			if (hour > 0 && hour < 12)
+				Console.WriteLine("Its morning.");
+			else if (hour >= 12 && hour < 18)
+				Console.WriteLine("Its Afternoon");
+			else
+				Console.WriteLine("Its Evening");
+
+			bool isGoldCustomer = true;
+			float price;
+	
+			if (isGoldCustomer)
+				price = 19.95f;
+			else
+				price = 29.95F;
+						
+			Console.WriteLine(price);
+
+			price = (isGoldCustomer) ? 19.95.f : 29.95;
+
+			Console.WriteLine(price);
+
+			var season = Season.Autumn;
+
+			switch (season)
+			{
+				case Season.Autumn:
+					Console.WriteLine("Its Autumn");
+					break;
+				case Season.Summer:
+					Console.WriteLine("Its going to rain");
+					break;
+				default:
+					Console.WriteLine("No season");	
+					break;
+			}
+
+			switch (season)
+			{
+				case Season.Autumn:
+				case Season.Summer:
+					Console.WriteLine("Promotion time!");
+					break;
+				default:
+					Console.WriteLine("No season");
+					break;	
+			}
+
+42. Exercise
+	Note: for all these exercises, ignore input validation unless otherwise directed. Assume the user enters a value in the format that the program expects. For example, if the program expects the user to enter a number, don't worry about validating if the input is a number or not. When testing your program, simply enter a number.
+
+	1- Write a program and ask the user to enter a number. The number should be between 1 to 10. If the user enters a valid number, display "Valid" on the console. Otherwise, display "Invalid". (This logic is used a lot in applications where values entered into input boxes need to be validated.)
+
+	2- Write a program which takes two numbers from the console and displays the maximum of the two.
+
+	3- Write a program and ask the user to enter the width and height of an image. Then tell if the image is landscape or portrait.
+
+	4- Your job is to write a program for a speed camera. For simplicity, ignore the details such as camera, sensors, etc and focus purely on the logic. Write a program that asks the user to enter the speed limit. Once set, the program asks for the speed of a car. If the user enters a value less than the speed limit, program should display Ok on the console. If the value is above the speed limit, the program should calculate the number of demerit points. For every 5km/hr above the speed limit, 1 demerit points should be incurred and displayed on the console. If the number of demerit points is above 12, the program should display License Suspended.
+
+43. Iteration Statements
+	Repeadetly repeating a sequence of statements
+	
+	For loops
+		for (var i = 0; i < 10; 1++)
+		Initialization; Condition; Iteration Clause
+	Foreach loops (Iterate over elements of a Enumerable object)
+		foreach (var number in numbers)
+	While loops 
+		while (i < 10)
+			i++;
+	Do-While loops
+		do
+		{
+		} while (i < 10);
+	break (Jump out of the loop)
+	continue (Go to the next iteration)
+
+44. Demo: For Loops
+	for (var i = 1; i <= 10; i++)
+		if (i%2 == 0)
+			Console.WriteLine(i);
+
+	for (var i = 10; i >= 10; i--);
+		if (i%2 == 0)
+			Console.WriteLine(i);
+
+45. Demo: Foreach Loops
+	string name = "Hugo Morales";
+	
+	foreach(var character in name)
+		Console.WriteLine(character);
+
+46. Demo: While Loops
+	var i = 0;
+
+	while (true)
+		Console.Write("Name: ");
+		var input = Console.ReadLine();
+		
+		if (String.IsNullOrWhiteSpace(input))
+			break;
+
+		Console.WriteLine("Echo: " + input);
+
+47. Random Class
+	var random = new Random();
+	random.Next();		// Random Int
+	for (int i = 0; i < 10; i++)
+	{
+		Console.WriteLine(random.Next(1, 10));
+		Console.Write((char)('a' + random.Next(97, 122)));
+	}
+	random.NexrBytes(); 	// Byte array
+	random.NextDouble();	// Random double between 0 and 1
+
+	const int passwordLength = 10;
+	char[] buffer = new char[passwordLength];
+	for (int i = 0; i < passwordLength; i++)
+	{
+		buffer[i] = (char)('a' + random.Next(1, 26));
+	}
+	var password = new string(buffer);
+	Console.WriteLine(password);
