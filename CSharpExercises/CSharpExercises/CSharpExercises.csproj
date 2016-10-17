@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArraysAndLists.cs" />
     <Compile Include="Conditionals.cs" />
     <Compile Include="ControlFlow.cs" />
     <Compile Include="Program.cs" />

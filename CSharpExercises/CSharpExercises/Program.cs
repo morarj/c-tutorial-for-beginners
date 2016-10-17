@@ -11,13 +11,18 @@ namespace CSharpExercises
             Conditionals.GreaterNumber();
             Conditionals.Image();
             Conditionals.SpeedCamera();
-
-            // Section 6
             ControlFlow.ExerciseOne();
             ControlFlow.ExerciseTwo();
             ControlFlow.ExerciseThree();
             ControlFlow.ExerciseFour();
             ControlFlow.ExerciseFive();
+
+            // Section 6
+            ArraysAndLists.ExerciseOne();
+            ArraysAndLists.ExerciseTwo();
+            ArraysAndLists.ExerciseThree();
+            ArraysAndLists.ExerciseFour();
+            ArraysAndLists.ExerciseFive();
         }
     }
 }
