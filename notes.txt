@@ -719,7 +719,53 @@ Section 5. Control Flow
 
 	5- Write a program and ask the user to supply a list of comma separated numbers (e.g 5, 1, 9, 2, 10). If the list is empty or includes less than 5 numbers, display "Invalid List" and ask the user to re-try; otherwise, display the 3 smallest numbers in the list.
 
-57. Summary
+56. Summary
 
-58. Section 7
+57. Section 7 Working with Dates
 
+58. DateTime
+	var date = new DateTime(2015, 1, 1);
+	var now = DateTime.Now;
+	var today = DateTime.Today;
+
+	Console.WriteLine(now.Hour);
+	Console.WriteLine(now.Minute);
+
+	var tomorrow = now.AddDays(1);
+	var yesterday = now.AddDays(-1);
+
+	Console.WriteLine(now.ToLongDateString());
+	Console.WriteLine(now.ToShortDateString());
+	Console.WriteLine(now.ToLongTimeString());
+	Console.WriteLine(now.ToShortTimeString());
+	Console.WriteLine(now.ToString("yyyy-MM-dd HH:mm"));
+
+59. TimeSpan
+	// Creating
+	var timeSpan = new TimeSpan(1, 2, 3);
+	var timeSpan1 = new TimeSpan(1, 0, 0);
+	var timeSpan2 = TimeSpan.FromHours(1);
+	
+	var start = new DateTime.now;
+	var end = start.AddMinutes(2);
+
+	var duration = end - start;
+	Console.WriteLine("Duration: " + duration);
+
+	// Properties
+	Console.WriteLine(timeSpan.Minutes);		// 2
+	Console.WriteLine(timeSpan.TotalMinutes);	// 62.05
+
+	// Add
+	Console.WriteLine("Add Example: " + timeSpan.Add(TimeSpan.FromMinutes(8)));
+	Console.WriteLine("Add Example: " + timeSpan.Subtract(TimeSpan.FromMinutes(2)));
+
+	// ToString
+	Console.WriteLine(timeSpan.ToString());
+
+	// Parse
+	Console.WriteLine(TimeSpan.Parse("01:02:03"));
+
+60. Summary
+
+61. Section 8: Working With Text
