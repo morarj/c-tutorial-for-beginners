@@ -769,3 +769,220 @@ Section 5. Control Flow
 60. Summary
 
 61. Section 8: Working With Text
+
+62. String
+	Useful string methods
+		Formatting
+			ToLower()
+			ToUpper()
+			Trim()
+		Searching
+			IndexOf('a')
+			LastIndexOf("Hello")
+		Substrings
+			Substring(startIndex)
+			Substring(startIndex, length)
+		Replacing
+			Replace('a', '!')
+			Replace("mosh", "moshfegh")
+		Null checking
+			String.IsNullOrEmpty(str)
+			String.IsNullOrWhiteSpace(str)
+		Splitting
+			str.Split(' ')
+	Converting a string to a number
+		string s = '1234';
+		int i = int.Parse(s);
+		int j = Convert.ToInt32(s);	// Recommended
+	Converting a number to a string
+		int i = 1234;
+		string s = i.ToString();	// 1234
+		string t = i.ToString("C");	// $1,234.00 Currency
+		string u = i.ToString("C0");	// $1,234
+63. Demo: String
+	var fullName = "Hugo Morales ";
+	Console.WriteLine("Trim: '{0}'", fullName.Trim());
+	Console.WriteLine(fullName.ToUpper());
+	
+	var index = fullName.IndexOf(' ');
+	var firstName = fullName.Substring(0, index);
+	var lastName = fullName.Substring(index + 1);
+	Console.WriteLine(firstName);
+	Console.WriteLine(lastName);
+
+	var names = fullName.Split(' ');
+	foreach (name in names)
+	{
+		Console.WriteLine(name);
+	}
+	
+	Console.WriteLine(fullName.Replace("Hugo", "Oguh"));
+
+	// Wont work with " "
+	if (String.IsNullOrEmpty(null) && String.IsNullOrEmpty(""))
+	{
+		Console.WriteLine("Invalid");
+	}
+
+	if (String.IsNullOrWhiteSpace(" "))
+	{
+		Console.WriteLine("Invalid");
+	}
+
+	var str = "25";
+	var age = Convert.ToByte(str);
+	Console.WriteLine(age);
+
+	float price = 29.95f;
+	Console.WriteLine(price.ToString("C"));	// Currency
+64. Live Coding: Summarising Text
+	var sentence = "ñldjfaljfslajfsalfjsalfjsdlfjsaljsdjfasl";
+	var summary = StringUtility.SummerizeText(sentence);
+	Console.WriteLine(summary);
+
+public Class StringUtility
+	public static string SummerizeText(string text, int maxLength = 20)
+	{
+		if (sentence.Length < maxLength)
+			return text;
+
+		var words = text.Split(' ');
+		var totalCharacters = 0;
+		var summaryWords = new List<string>();		
+
+		foreach (word as words)
+		{
+			totalCharacter += word.Length + 1;
+			
+			if (totalCharacters > maxLength)
+				break; 
+			
+			summaryWords.Add(word);
+		}
+			
+		return String.Join(" ", summaryWords) + "...";		
+	} 
+
+65. StringBuilder
+	Defined in System.Text
+	A mutable string
+	Easy and fast to create and manipulate strings
+	No for Searching
+	String Manipulation Methods
+		Append
+		Insert
+		Remove
+		Replace
+		Clear
+66. Demo: StringBuilder
+	var builder = new StringBuilder("Hello World");
+	
+	builder.Append('-', 10);
+	builder.AppendLine();
+	builder.Append("Header");
+	builder.AppendLine();
+	builder.Append('-', 10);
+	Console.WriteLine(builder);
+
+	builder.Replace('-', '+');
+	Console.WriteLine(builder);
+
+	builder.Remove(0, 10);
+	Console.WriteLine(builder);
+
+	builder.Insert(0, new string('-', 10));
+	Console.WriteLine(builder);
+
+	Console.WriteLine(builder[0]);
+67. Exercises
+	1- Write a program and ask the user to enter a few numbers separated by a hyphen. Work out if the numbers are consecutive. For example, if the input is "5-6-7-8-9" or "20-19-18-17-16", display a message: "Consecutive"; otherwise, display "Not Consecutive".
+
+	2- Write a program and ask the user to enter a few numbers separated by a hyphen. If the user simply presses Enter, without supplying an input, exit immediately; otherwise, check to see if there are duplicates. If so, display "Duplicate" on the console.
+
+	3- Write a program and ask the user to enter a time value in the 24-hour time format (e.g. 19:00). A valid time should be between 00:00 and 23:59. If the time is valid, display "Ok"; otherwise, display "Invalid Time". If the user doesn't provide any values, consider it as invalid time. 
+
+	4- Write a program and ask the user to enter a few words separated by a space. Use the words to create a variable name with PascalCase. For example, if the user types: "number of students", display "NumberOfStudents". Make sure that the program is not dependent on the input. So, if the user types "NUMBER OF STUDENTS", the program should still display "NumberOfStudents".
+
+	5- Write a program and ask the user to enter an English word. Count the number of vowels (a, e, o, u, i) in the word. So, if the user enters "inadequate", the program should display 6 on the console.
+68. Procedural Programming
+	A programming paradigm based on procedure calls (Methods)
+69. Summary
+70. Section 9: Working with files
+71. System.IO Namespace
+	System.IO
+		File, FileInfo
+			(Huge number of operations)FileInfo: Instance, File: Static
+			Provide methods for creating, copying, deleting, moving and opening files
+				Create, Copy, Delete, Exists, GetAttributes, Move, ReadAllText()
+		Directory, DirectoryInfo
+			Directory: Static, DirectoryInfo: Istance
+				CreateDirctory(), Delete(), Exists(), GetCurrentDirectory(), GetFiles(), Move(), GetLogicalDrives()
+		Path
+			GetDirectoryName(), GetFileName(), GetExtension(), GetTempPath()
+72. Demo: File and FileInfo
+	var path = "somepath";
+	File.Copy(@"C:\temp\myfile.jpg", @"D:\temp\myfile.jpg", true /*Overwrite*/);
+	File.Delete(path);
+	
+	if (File.Exists(path))
+	{
+		//
+	}
+
+	var content = File.ReadAllText(path);
+
+	//
+	var fileInfo = new FileInfo(path);
+	fileInfo.CopyTo("...");
+	fileInfo.Delete();
+	if (fileInfo.Exists)
+	{
+		//
+	}
+73. Directory and DirectoryInfo
+	Directory.CreateDirectory(@"...");
+	var files = Directory.GetFiles(@"...", "*.*", SearchOption.AllDirectories);
+	foreach (var file as files)
+		Console.WriteLine(file);
+
+	var directories = Directory.GetDirectories(@"...", "*.*", SearchOption.AllDirectories);
+	foreach (var directory in directories)
+		Console.WriteLine(directory);
+
+	Directory.Exists("...");
+
+	//
+	var directoryInfo = new DirectoryInfo("...");
+	directoryInfo.GetFiles();
+	directoryInfo.GetDirectories();
+74. Path
+	var path = @"...";
+	Console.WriteLine(Path.GetExtension(path));
+	Console.WriteLine(Path.GetFileName(path));
+	Console.WriteLine(Path.GetFileNameWithoutExtension(path));
+	Console.WriteLine(Path.GetDirectoryName(path));
+75. Exercises
+	1- Write a program that reads a text file and displays the number of words.
+
+	2- Write a program that reads a text file and displays the longest word in the file.
+76. Summary
+77. Section 10: Debugging Applications
+78. Debugging Tools in Visual Studio
+	Using breakpoints & Run in debug mode
+	
+	Debug->Windows->Watch
+79. Remove Side Effects
+	ArgumentNullException
+	ArgumentOutOfRangeException
+80. Defense Programming
+81. Call Stack Window
+	Debug Mode
+	Debug -> Windows -> Call Stack Windows
+		Shows how you got to a breaking point
+82. Locals and Autos Window
+	Debug -> Windows -> Autos | Locals
+		Autos
+			Automatic list of variables
+		Locals
+			Variables on the local scope
+83. Summary
